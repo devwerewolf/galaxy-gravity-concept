@@ -13,14 +13,14 @@ export default class GravitySphere extends wwd_Area {
     const bodies = this.getOverlappingBodies<TygraviBody>();
     
     for (let body of bodies) {
-      if (body.positionIsWithinMargin() === false) {
+      if (body.positionIsWithinMargin(this.translation) === false) {
         // Figure out velocity offset
-        const speed = fixedDelta * this._gravity;
+        const speed = fixedDelta * this.gravity;
         const direction = body.translation.direction_to(this.translation);
         //@ts-ignore
         const velocityOffset: number = speed * direction;
         
-        switch (this._gravityType) {
+        switch (this.gravityType) {
           case GravityType.Attract:
             body.increaseVelocity(velocityOffset);
             break;
@@ -29,7 +29,10 @@ export default class GravitySphere extends wwd_Area {
             break;
         }
         
-        body.move_and_slide(body._velocity);
+        body.move_and_slide(body.velocity);
+      }
+      else {
+        body.resetPosition(this.translation);
       }
     }
   }

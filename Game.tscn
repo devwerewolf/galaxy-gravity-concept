@@ -11,7 +11,7 @@
 transform = Transform( 1, 0, 0, 0, 0.983816, 0.17918, 0, -0.17918, 0.983816, 0, 0.431574, 4.47822 )
 
 [node name="Gravity Sphere" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.826175, -1.57678, 0 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.826175, -1.19982, -1.60368 )
 
 [node name="RigidBody" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.285505, 0.147199, 0 )
@@ -21,3 +21,4 @@ script = ExtResource( 2 )
 shape = SubResource( 1 )
 
 [node name="CSGBox" type="CSGBox" parent="RigidBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.191339, 0 )
