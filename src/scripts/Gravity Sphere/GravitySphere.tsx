@@ -1,5 +1,5 @@
-import { GravityType } from "../../models/GravityType/GravityType";
 import { wwd_Area } from "../../models/wwd_Area/wwd_Area";
+import { GravityType } from "../../models/GravityType/GravityType";
 import TygraviBody from "../Tygravi Body/TygraviBody";
 
 const { print } = godot;
@@ -16,7 +16,8 @@ export default class GravitySphere extends wwd_Area {
       if (body.positionIsWithinMargin(this.translation) === false) {
         // Figure out velocity offset
         const speed = fixedDelta * this.gravity;
-        const direction = body.translation.direction_to(this.translation);
+        const target = this.translation;
+        const direction = body.translation.direction_to(target);
         //@ts-ignore
         const velocityOffset: number = speed * direction;
         
@@ -30,9 +31,6 @@ export default class GravitySphere extends wwd_Area {
         }
         
         body.move_and_slide(body.velocity);
-      }
-      else {
-        body.resetPosition(this.translation);
       }
     }
   }

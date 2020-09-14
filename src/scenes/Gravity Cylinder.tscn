@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://src/scripts/Gravity Cylinder/GravityCylinder.jsx" type="Script" id=1]
+
+[sub_resource type="CylinderShape" id=1]
+
+[node name="Gravity Cylinder" type="Area"]
+space_override = 1
+gravity_vec = Vector3( 0, 1, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CSGCylinder" type="CSGCylinder" parent="."]
+height = 2.0
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+shape = SubResource( 1 )
